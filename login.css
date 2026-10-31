@@ -1,0 +1,441 @@
+/* =================================
+   RENAI MEMBER LOGIN SHEET
+================================= */
+
+.login-sheet {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  border: none;
+  padding: 20px;
+  margin: 0;
+  background: transparent;
+  overflow-y: auto;
+  color: white;
+}
+
+.login-sheet[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* BACKGROUND OVERLAY */
+
+.login-sheet::backdrop {
+  background:
+    radial-gradient(
+      circle at 75% 20%,
+      rgba(225, 235, 235, 0.75),
+      transparent 50%
+    ),
+    linear-gradient(
+      120deg,
+      #202832 0%,
+      #52636b 50%,
+      #a8b9ba 100%
+    );
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* MAIN WRAPPER */
+
+.login-wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+/* GLASS LOGIN CARD */
+
+.login-card {
+  width: 100%;
+  padding: 40px 36px;
+  border-radius: 30px;
+
+  background: rgba(151, 190, 188, 0.43);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.12);
+
+  position: relative;
+}
+
+/* CLOSE BUTTON */
+
+.login-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 50%;
+
+  background: rgba(48,55,64,0.4);
+  color: white;
+
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.login-close:hover {
+  background: #0870b9;
+}
+
+/* HEADING */
+
+.login-card h2 {
+  margin: 0 0 30px;
+
+  color: #ffffff;
+
+  font-size: 26px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+  font-family: Arial, sans-serif;
+}
+
+/* INPUT BOXES */
+
+.login-input {
+  width: 100%;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+
+  background: #ffffff;
+
+  border-radius: 6px;
+
+  margin-bottom: 20px;
+
+  padding: 0 22px;
+
+  box-sizing: border-box;
+}
+
+.login-input svg {
+  width: 27px;
+  height: 27px;
+
+  fill: #999eaa;
+
+  flex-shrink: 0;
+}
+
+.login-input input {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  padding-left: 30px;
+
+  font-size: 20px;
+
+  color: #343b45;
+
+  font-family: Arial, sans-serif;
+}
+
+.login-input input::placeholder {
+  color: #999ba5;
+  opacity: 1;
+}
+
+/* LOGIN BUTTON */
+
+.login-submit {
+  width: 100%;
+  height: 58px;
+
+  border: none;
+
+  background: #303740;
+
+  color: white;
+
+  font-size: 20px;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition: background 0.3s ease;
+}
+
+.login-submit:hover {
+  background: #172c45;
+}
+
+/* REMEMBER ME AND FORGOT PASSWORD */
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 28px 0 24px;
+
+  padding: 0 25px;
+}
+
+.remember-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #d1e0e1;
+
+  font-size: 17px;
+
+  cursor: pointer;
+}
+
+.remember-option input {
+  width: 21px;
+  height: 21px;
+
+  accent-color: #344d58;
+
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: #d1e0e1;
+
+  font-size: 16px;
+
+  font-style: italic;
+
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  color: white;
+}
+
+/* SOCIAL BUTTONS */
+
+.login-social {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  padding: 0;
+}
+
+.social-btn {
+  height: 45px;
+
+  border: none;
+
+  color: white;
+
+  font-size: 12px;
+
+  letter-spacing: 3px;
+
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+}
+
+.social-btn:hover {
+  opacity: 0.8;
+}
+
+.social-blue {
+  background: #0870b9;
+}
+
+.social-cyan {
+  background: #08c2e4;
+}
+
+.social-red {
+  background: #ff3457;
+}
+
+/* COPYRIGHT */
+
+.login-copyright {
+  margin-top: 22px;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 16px;
+
+  font-weight: 500;
+}
+
+/* LOGIN MESSAGE */
+
+.login-message {
+  color: white;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 600px) {
+
+  .login-sheet {
+    padding: 16px;
+  }
+
+  .login-card {
+    padding: 38px 22px;
+    border-radius: 25px;
+  }
+
+  .login-card h2 {
+    font-size: 23px;
+    margin-bottom: 28px;
+  }
+
+  .login-input {
+    height: 58px;
+    padding: 0 17px;
+    margin-bottom: 16px;
+  }
+
+  .login-input svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .login-input input {
+    font-size: 17px;
+    padding-left: 22px;
+  }
+
+  .login-submit {
+    height: 53px;
+    font-size: 18px;
+  }
+
+  .login-options {
+    padding: 0;
+    margin: 23px 0;
+  }
+
+  .remember-option {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .remember-option input {
+    width: 18px;
+    height: 18px;
+  }
+
+  .forgot-password {
+    font-size: 13px;
+  }
+
+  .login-social {
+    gap: 10px;
+  }
+
+  .social-btn {
+    height: 40px;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .login-copyright {
+    font-size: 13px;
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .login-card {
+    padding: 32px 16px;
+  }
+
+  .login-social {
+    gap: 6px;
+  }
+
+  .social-btn {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+}
+/* BACKGROUND OVERLAY - VISIBLE + BLURRED WEBSITE */
+
+.login-sheet::backdrop {
+  background: rgba(10, 20, 35, 0.30);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+/* KEEP LOGIN BOX CLEAR AND VISIBLE */
+
+.login-card {
+  position: relative;
+  z-index: 1;
+
+  background: rgba(151, 190, 188, 0.72);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* LOGIN CLOSE BUTTON */
+
+.login-close {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+
+  background: rgba(48,55,64,0.45);
+  color: white;
+
+  font-size: 23px;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.login-close:hover {
+  background: #0870b9;
+  transform: rotate(90deg);
+}

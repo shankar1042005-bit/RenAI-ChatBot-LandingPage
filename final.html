@@ -1,0 +1,811 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="RenAI turns your business knowledge into clear, grounded customer support. Explore a retrieval-augmented approach to AI support for web and mobile.">
+  <meta property="og:title" content="RenAI — Your knowledge. Their answers.">
+  <meta property="og:description" content="AI customer support, grounded in your knowledge. Less guesswork. More confidence.">
+  <meta property="og:type" content="website">
+  <title>RenAI ChatBot</title>
+  <link rel="icon" type="image/png" href="assets/renai-bird.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+<!-- OceanRAG widget: config lives in script.js, which must load before widget.js -->
+<script src="script.js"></script>
+<script src="login.js"></script>
+<script src="https://chatbot3-proj-1.onrender.com/widget/widget.js?v=4" async></script>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-mark" viewBox="0 0 100 100">
+  <image href="assets/renai-bird.png"
+         x="10" y="10"
+         width="85" height="80"
+         preserveAspectRatio="xMidYMid meet"/>
+</symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-up-right" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8zM14 3v5h5M8 12h8m-8 4h6"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-6"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8zm-10 9 10 5 10-5M2 16l10 5 10-5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V3H3v13h5"/></symbol>
+  
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6v18h12V8zM14 3v5h5"/></symbol>
+    <symbol id="i-nodes" viewBox="0 0 24 24"><path d="m6 6 12 3-8 11"/><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="9" r="2.5"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 2 8M3 4v6h6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+
+  </defs></svg>
+
+    <!-- Section: site header / navigation -->
+  <header class="site-header" id="nav">
+    <div class="container nav-shell">
+      <a class="brand" href="#" aria-label="RenAI home"><img class="brand-logo" src="assets\renai-logo-full.png" alt="RenAI ChatBot" width="345" height="215"><span class="brand-tag">CHATBOT  PROVIDER </span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#features">Why RenAI</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#developers">Experience View</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQs</a>
+      </nav>
+      <div class="nav-actions">
+
+  <!-- LOGIN: opens the member login sheet -->
+  <button class="button button-dark button-small login-trigger" type="button" id="openLoginSheet" aria-haspopup="dialog" aria-controls="memberLoginSheet">Login<svg class="icon"><use href="#i-up-right"/></svg></button>
+
+  <!-- MOBILE MENU -->
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span>
+    <span></span>
+  </button>
+
+ 
+
+</div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu" hidden>
+      <a href="#features">Why RenAI</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#developers">For developers</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQs</a>
+    </nav>
+  </header>
+    <!-- Section: page main -->
+  <main id="main">
+        <!-- Section: hero -->
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow hero-eyebrow"><span class="status-dot"></span>YOUR KNOWLEDGE. A NEW KIND OF SUPPORT.</div>
+        <h1 id="hero-title">
+          <span class="line-mask"><span>Your Business.</span></span>
+          <span class="line-mask"><span>Your Data.</span></span>
+          <span class="line-mask"><span class="accent-line">Your &nbsp;AI&nbsp; ChatBot.<svg class="hero-underline" viewBox="0 0 300 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 11Q240 -5 498 7"/></svg></span></span>
+        </h1>
+        <p class="hero-description" style="font-weight: bold;">A RenAI chatbot customer support,<br> Turn your Business File Formats and Business Websites into Answers your customers can actually trust.</p>
+        <div class="hero-actions">
+          <button class="button button-lime" type="button" data-purchase aria-haspopup="dialog" aria-controls="leadSheet">Purchase Chatbot<svg class="icon"><use href="#i-arrow"/></svg></button>
+          <a class="text-link" href="#developers"><span class="play-icon">▷</span>See how it works</a>
+        </div>
+        <div class="hero-reassurance">
+          <span><svg class="icon"><use href="#i-check"/></svg>Your knowledge, your control</span>
+          <span><svg class="icon"><use href="#i-check"/></svg>Built for web &amp; mobile</span>
+        </div>
+      </div>
+      <div class="hero-stage">
+        <div class="stage-grid" aria-hidden="true"></div>
+        <div class="orbit orbit-one" aria-hidden="true"></div>
+        <div class="orbit orbit-two" aria-hidden="true"></div>
+        <div class="stage-caption mono"> KNOWLEDGE → CONTEXT → CLARITY</div>
+        <div class="floating-source source-one"><span class="file-icon"><svg class="icon"><use href="#i-doc"/></svg></span><span>Product guide.pdf<small>YOUR DOCUMENTS</small></span><span class="mini-check">✓</span></div>
+        <div class="floating-source source-two"><span class="web-icon"><svg class="icon"><use href="#i-globe"/></svg></span><span>Your help center<small>YOUR WEBSITE</small></span><span class="mini-check">✓</span></div>
+        <div class="product-window">
+          <div class="window-bar"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="mono"></span></div>
+          <div class="chat-header">
+            <div class="chat-logo"><svg><use href="#i-mark"/></svg></div>
+            <div><strong>Your AI assistant</strong><span><i class="status-dot"></i> Here to help, around the clock</span></div>
+          </div>
+          <div class="chat-conversation">
+            <div class="customer-message">How To Purchase A Renai-Chatbot ?<span class="user-avatar">X</span></div>
+            <div class="assistant-message">
+              <span class="mini-brand"><svg><use href="#i-mark"/></svg></span>
+              <div>
+                <span class="answer-label">Assistant <span style="color:#6b7385">· just now</span></span>
+                <div class="answer-bubble">
+                  <p>Purchasing a Renai-Chatbot is simple.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="chat-input-preview" type="button"><span>Ask us anything…</span><span>→</span></button>
+          <div class="chat-powered">Powered by <strong>renai.</div>
+        </div>
+        </div>
+      </section>
+<div class="Blue-bar1">
+  <button class="marquee-pause" type="button" aria-label="Pause moving text">Ⅱ</button>
+  <div class="moving-text1" aria-label="Upload your PDF, TXT, CSV, DOCX, JSON, MD file formats and start conversation">
+    <span class="mt-group"><span>Upload&nbsp;&nbsp; Your</span><span>PDF</span><span>TXT</span><span>CSV</span><span>DOCX</span><span>JSON</span><span>MD</span><span>File&nbsp;&nbsp; Formats&nbsp;&nbsp; And&nbsp;&nbsp; Start&nbsp;&nbsp; Conversation&nbsp;&nbsp;</span></span><span> </span><span> </span><span> </span>
+    <span class="mt-group"><span>Upload&nbsp;&nbsp; Your</span><span>PDF</span><span>TXT</span><span>CSV</span><span>DOCX</span><span>JSON</span><span>MD</span><span>File&nbsp;&nbsp; Formats&nbsp;&nbsp; And&nbsp;&nbsp; Start&nbsp;&nbsp; Conversation&nbsp;&nbsp;</span></span><span></span> <span> </span><span> </span>
+    <span class="mt-group"><span>Upload&nbsp;&nbsp; Your</span><span>PDF</span><span>TXT</span><span>CSV</span><span>DOCX</span><span>JSON</span><span>MD</span><span>File&nbsp;&nbsp; Formats&nbsp;&nbsp; And&nbsp;&nbsp; Start&nbsp;&nbsp; Conversation&nbsp;&nbsp;</span></span><span></span> <span> </span> <span> </span>
+    <span class="mt-group"><span>Upload&nbsp;&nbsp; Your</span><span>PDF</span><span>TXT</span><span>CSV</span><span>DOCX</span><span>JSON</span><span>MD</span><span>File&nbsp;&nbsp; Formats&nbsp;&nbsp; And&nbsp;&nbsp; Start&nbsp;&nbsp; Conversation&nbsp;&nbsp;</span></span><span></span><span> </span> <span> </span>
+    <span class="mt-group"><span>Upload&nbsp;&nbsp; Your</span><span>PDF</span><span>TXT</span><span>CSV</span><span>DOCX</span><span>JSON</span><span>MD</span><span>File&nbsp;&nbsp; Formats&nbsp;&nbsp; And&nbsp;&nbsp; Start&nbsp;&nbsp; Conversation&nbsp;&nbsp;</span></span><span></span><span> </span> <span> </span>
+    <span class="mt-group"><span>Upload&nbsp;&nbsp; Your</span><span>PDF</span><span>TXT</span><span>CSV</span><span>DOCX</span><span>JSON</span><span>MD</span><span>File&nbsp;&nbsp; Formats&nbsp;&nbsp; And&nbsp;&nbsp; Start&nbsp;&nbsp; Conversation&nbsp;&nbsp;</span></span><span></span><span> </span> <span> </span>
+  </div>
+</div>
+
+        <!-- Section: why RenAI / features -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="container why-renai">
+        <div class="section-head">
+          <div>
+             
+<h2 id="features-title" style="
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -1.5px;
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 6px;
+    padding: 8px 16px;
+    color: #000000;
+    background: linear-gradient(90deg, #000000, #3300ff, #000000);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+">
+    See How AI Understands Your Business.
+</h2>
+</div>
+
+<h3 class="renai-rag-heading">
+      Unlike standard AI that guesses answers based on general internet data,
+  RenAi utilizes advanced
+  <span>Retrieval-Augmented Generation (RAG)</span>.
+  We ground your AI assistant entirely in your company’s unique knowledge base
+  to deliver hyper-accurate, verified answers.
+</h3>
+
+ 
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card" data-reveal>
+            <div class="feature-visual" aria-hidden="true">
+              <div class="doc-stack">
+                <img src="assets/docment-RAG.jpeg" alt="Renai Bird Logo" >
+              </div>
+            </div>
+            <div class="card-content">
+              <span class="chapter-mini">1. CONTEXT, NOT FRAGMENTS</span>
+              <h3>Smarter pieces.<br>A clearer picture.</h3>
+              <p>Structure-aware chunking keeps headings, tables, and related ideas together. Because meaning doesn’t stop at a character limit.</p>
+            </div>
+          </article>
+          <article class="feature-card" data-reveal>
+            <div class="feature-visual" aria-hidden="true">
+              <div class="search-map">
+                <div class="search-path">
+                  <img src="assets/keyword-RAG.jpeg" alt="Renai Bird Logo" >
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+              <span class="chapter-mini">2. TWO WAYS TO FIND THE ONE</span>
+              <h3>Exact words.<br>Deeper meaning.</h3>
+              <p>Hybrid retrieval combines keyword precision with semantic understanding. Reranking brings the most relevant context to the top.</p>
+            </div>
+          </article>
+          <article class="benefit-card" data-reveal>
+          <div class="benefit-visual" aria-hidden="true">
+          <div class="clock-ring" style="background: transparent !important; border: none !important; box-shadow: none !important; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;"><img src="assets/ChunksImg.jpg" alt="Renai Bird Logo" ></div>            <div class="always-pill"></div>
+          </div>
+          <div class="card-content">
+          <span class="chapter-mini">3. AI Responses</span>
+          <h3>KnowledgeCut-off.<br>Knows when not to answer.</h3>
+          <p>No relevant source? No confident fiction. Acknowledge the gap and guide customers toward your human support team.</p>
+          </div>
+          <span class="card-tag">SUPPORT WITHOUT THE WAIT</span>
+        </article>
+        </div>
+        <div class="feature-footer">
+          <span><svg class="icon"><use href="#i-file"/></svg >Source-backed answers</span>
+          <span><svg class="icon"><use href="#i-shield"/></svg>Knowledge boundaries</span>
+          <span><svg class="icon"><use href="#i-code"/></svg>Embeddable experience</span>
+          <span><svg class="icon"><use href="#i-globe"/></svg>Always-on assistance</span>
+        </div>
+      </div>
+
+        <!-- Section: brand marquee -->
+    <section class="marquee-section">
+      <div class="marquee-track" aria-hidden="true">
+        <div><span>Your knowledge.</span><span class="marquee-outline">Their confidence.</span></div>
+        <div><span>Your knowledge.</span><span class="marquee-outline">Their confidence.</span></div>
+        <div><span>Your knowledge.</span><span class="marquee-outline">Their confidence.</span></div>
+        <div><span>Your knowledge.</span><span class="marquee-outline">Their confidence.</span></div>
+        <div><span>Your knowledge.</span><span class="marquee-outline">Their confidence.</span></div>
+        <div><span>Your knowledge.</span><span class="marquee-outline">Their confidence.</span></div>
+        <div><span>Your knowledge.</span><span class="marquee-outline">Their confidence.</span></div>
+        <div><span>Your knowledge.</span><span class="marquee-outline">Their confidence.</span></div>
+      </div>
+      <button class="marquee-pause" type="button" aria-label="Pause moving text">Ⅱ</button>
+    </section>
+
+         <!-- Section: how it works -->
+    <section class="section architecture-section" id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-label"> THE INTELLIGENCE BEHIND THE ANSWER</div>
+            
+<h2 id="features-title" style="
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -1.2px;
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 28px;
+    padding: 8px 16px;
+    color: #0a2a52;
+    background: linear-gradient(90deg, #0a2a52, #1769c2, #0a2a52);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+">
+    Your Data Has Answers.<br>Let AI Find Them.
+</h2>
+
+          </div>
+          
+<div class="renai-docs-card">
+    <div class="renai-docs-tag">
+        <span></span> KNOWLEDGE, CONNECTED
+    </div>
+
+    <h2>
+        The answer is somewhere
+        <span class="renai-docs-blue">in your docs.</span>
+    </h2>
+
+    <p>
+        RenAI brings it to the surface — connecting the dots
+        between what your team knows and what it needs to know.
+    </p>
+
+    <div class="renai-docs-footer">
+        <span></span>
+        From scattered information to clear answers.
+    </div>
+</div>
+
+        </div>
+        <div class="workspace" id="playground" data-reveal>
+          <div class="workspace-topbar">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="mono">RENAI KNOWLEDGE STUDIO</span>
+            <span class="preview-badge">INTERACTIVE PREVIEW</span>
+          </div>
+          <div class="workspace-content">
+            <div class="pipeline-panel">
+              <div class="pipeline-tabs" role="tablist">
+                <button class="pipeline-tab" id="tab-connect" role="tab" aria-selected="true" type="button" data-step="0">1 Connect</button>
+                <button class="pipeline-tab" id="tab-understand" role="tab" aria-selected="false" type="button" data-step="1">2 Understand</button>
+                <button class="pipeline-tab" id="tab-answer" role="tab" aria-selected="false" type="button" data-step="2">3 Answer</button>
+              </div>
+              <div class="pipeline-content" id="pipeline-content">
+                <div class="pipeline-step" id="pipeline-step-label">1 GIVE YOUR KNOWLEDGE A HOME</div>
+                <h3 id="pipeline-heading">Everything you know.<br>Finally, connected.</h3>
+                <p id="pipeline-description">Bring together your documents, help articles, and website content. RenAI preserves their structure to build a knowledge base that makes sense.</p>
+                <div class="pipeline-diagram">
+                  <div class="pipeline-block"><svg class="icon"><use href="#i-file"/></svg><span class="diagram-label">Your documents</span></div>
+                  <svg class="icon"><use href="#i-right" style="color: #ffff;"/></svg>
+                  <div class="pipeline-block primary"><svg class="icon"><use href="#i-layers"/></svg><span class="diagram-label">Smart chunking</span></div>
+                  <svg class="icon"><use href="#i-right" style="color: #ffff;"/></svg>
+                  <div class="pipeline-block"><svg class="icon"><use href="#i-nodes"/></svg><span class="diagram-label">Knowledge base</span></div>
+                </div>
+                <div class="pipeline-note"><svg class="icon"><use href="#i-check"/></svg><span id="pipeline-note">Headings, relationships, and context stay intact.</span></div>
+              </div>
+            </div>
+            <div class="chat-panel">
+              <div class="chat-top">
+                <span class="chat-avatar"><svg width="16" height="16"><use href="#i-mark"/></svg></span>
+                <div class="top-panel"><strong style="font-size:12px">Your RenAI assistant</strong><small style="display:flex;gap:5px;align-items:center;font-size:10px;color:#4d5a41"><span class="dot"></span>Sample knowledge loaded</small></div>
+                <button type="button" id="chat-reset" aria-label="Reset" style="margin-left:auto"><svg class="icon"><use href="#i-reset"/></svg></button>
+              </div>
+              <div class="chat-log" id="chat-log" role="log" aria-live="polite"></div>
+              <div class="sample-prompts">
+                <button class="sample-prompt" type="button" data-question="What is your return policy?">What’s your return policy?</button>
+                <button class="sample-prompt" type="button" data-question="How do I get started?">How do I get started?</button>
+                <button class="sample-prompt" type="button" data-question="Can I change my plan?">Can I change my plan?</button>
+                <button class="sample-prompt" type="button" data-question="How to Purchase Chatbot?">How to Purchase Chatbot?</button>
+              </div>
+              <form class="chat-form" id="chat-form">
+                <label class="sr-only" for="chat-input">Ask</label>
+                <input id="chat-input" placeholder="Im here to help you! Ask a question " maxlength="300" required>
+                <button type="submit" aria-label="Send"><svg class="icon"><use href="#i-right"/></svg></button>
+              </form>
+              <p class="chat-disclaimer">Scripted product demo · Sample data, not a live AI service</p>
+            </div>
+          </div>
+        </div>
+        
+<div class="Blue-bar">
+  <button class="marquee-pause" type="button" aria-label="Pause moving text">Ⅱ</button>
+  <div class="moving-text">
+    <div class="mt-group">
+      <span>Select an AI model ----></span>
+      <span>OpenAI</span>
+      <span>ChatGPT</span>
+      <span>Anthropic</span>
+      <span>Gemini</span>
+      <span>Meta</span>
+      <span>Hugging Face</span>
+      <span>DeepSeek</span>
+      <span></span><span></span><span></span>
+    </div>
+    <div class="mt-group">
+      <span>Select an AI model ----></span>
+      <span>OpenAI</span>
+      <span>ChatGPT</span>
+      <span>Anthropic</span>
+      <span>Gemini</span>
+      <span>Meta</span>
+      <span>Hugging Face</span>
+      <span>DeepSeek</span>
+      <span></span><span></span><span></span>
+    </div>
+    <div class="mt-group">
+      <span>Select an AI model ----></span>
+      <span>OpenAI</span>
+      <span>ChatGPT</span>
+      <span>Anthropic</span>
+      <span>Gemini</span>
+      <span>Meta</span>
+      <span>Hugging Face</span>
+      <span>DeepSeek</span>
+      <span></span><span></span><span></span>
+    </div>
+    <div class="mt-group">
+      <span>Select an AI model ----></span>
+      <span>OpenAI</span>
+      <span>ChatGPT</span>
+      <span>Anthropic</span>
+      <span>Gemini</span>
+      <span>Meta</span>
+      <span>Hugging Face</span>
+      <span>DeepSeek</span>
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+
+        
+
+<!-- RAG Knowledge Section -->
+<section class="rag-knowledge-section">
+
+    <div class="rag-image">
+        <img
+            src="assets/rag-knowledge.jpg"
+            alt="Business knowledge powered by AI"
+            class="rag-feature-image"
+        />
+        <div class="rag-image-caption">
+            KNOWLEDGE IS POWERFUL WHEN IT'S ACCESSIBLE.
+        </div>
+    </div>
+
+    <div class="rag-content">
+        <span class="rag-eyebrow">OUR APPROACH TO AI</span>
+
+        <h2>
+            Every Answer Starts With<br> Your Knowledge.
+            
+        </h2>
+
+        <p class="rag-description">
+            RenAI uses Retrieval-Augmented Generation (RAG)
+            to connect AI with your business knowledge.
+            It retrieves relevant information from your
+            connected sources to deliver useful,
+            context-aware answers to your customers.
+        </p>
+
+        <div class="rag-benefits">
+            <div class="rag-benefit">
+                <span class="rag-check">✓</span>
+                <div>
+                    <h3>Knowledge-Driven Responses</h3>
+                    <p>Answers grounded in your business information.</p>
+                </div>
+            </div>
+
+            <div class="rag-benefit">
+                <span class="rag-check">✓</span>
+                <div>
+                    <h3>Relevant Context Retrieval</h3>
+                    <p>Find the right information before generating responses.</p>
+                </div>
+            </div>
+
+            <div class="rag-benefit">
+                <span class="rag-check">✓</span>
+                <div>
+                    <h3>Ready for Your Website</h3>
+                    <p>Make your business knowledge accessible to visitors.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+</section>
+</section>
+<section class="section comparison-section" id="comparison">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-label"> NOT ALL AI IS CREATED EQUAL</div>
+            <h2 id="features-title" style="
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 800;
+    line-height: -1.25;
+    letter-spacing: -1.2px;
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 28px;
+    padding: 8px 16px;
+    color: #0a2a52;
+    background: linear-gradient(90deg, #0a2a52, #1769c2, #0a2a52);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+">
+    Beyond the Ordinary Chatbot.<br>
+    <span style="-webkit-text-fill-color: #000000;">RenAI</span> is Built for Your Business.
+</h2>
+</div>
+<div class="renai-creative">
+    <div class="renai-tag">
+        <span class="renai-dot"></span>
+        AI THAT WORKS FOR YOU
+    </div>
+
+    <h2>
+        Simple for your
+        <span class="text-light">customers.</span>
+    </h2>
+
+    <h2 class="powerful">
+        Powerful for
+        <span class="text-blue">your business.</span>
+    </h2>
+
+    <div class="renai-bottom">
+        <span></span>
+        <p>Every conversation. More understanding.</p>
+    </div>
+</div>
+
+<div class="comparison-wrapper" data-reveal>
+  <table class="comparison-table">
+    <caption class="sr-only">
+      Comparison of general-purpose chat, basic retrieval, and RenAI
+    </caption>
+
+    <thead>
+      <tr>
+        <th class="feature-heading">BUILT-IN APPROACH</th>
+        <th>General-purpose<br>AI chat</th>
+        <th>Basic vector<br>RAG</th>
+        <th class="renai-heading">
+          <span class="table-brand">
+            <svg class="brand-icon"><use href="#i-mark"></use></svg>
+            <span style="font-size: 25px;">Renai ChatBot</span>
+          </span>
+          <span class="renai-tag">BUSINESS AI</span>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Your company’s knowledge</td>
+        <td>Prompt-dependent</td>
+        <td>Connected sources</td>
+        <td class="last-column">
+          <svg class="check-icon"><use href="#i-check"></use></svg>
+          <span>Knowledge-first</span>
+        </td>
+      </tr>
+      <tr>
+        <td>Document understanding</td>
+        <td>Raw input</td>
+        <td>Fixed-size chunks</td>
+        <td class="last-column">
+          <svg class="check-icon"><use href="#i-check"></use></svg>
+          <span>Structure-aware</span>
+        </td>
+      </tr>
+      <tr>
+        <td>Finding relevant context</td>
+        <td>Model knowledge</td>
+        <td>Semantic search</td>
+        <td class="last-column">
+          <svg class="check-icon"><use href="#i-check"></use></svg>
+          <span>Hybrid reranking</span>
+        </td>
+      </tr>
+      <tr>
+        <td>Traceable responses</td>
+        <td>Not inherent</td>
+        <td>Implementation varies</td>
+        <td class="last-column">
+          <svg class="check-icon"><use href="#i-check"></use></svg>
+          <span>Source-grounded</span>
+        </td>
+      </tr>
+      <tr>
+        <td>Model flexibility</td>
+        <td>Provider-specific</td>
+        <td>Implementation varies</td>
+        <td class="last-column">
+          <svg class="check-icon"><use href="#i-check"></use></svg>
+          <span>Multi-model by design</span>
+        </td>
+      </tr>
+      <tr>
+        <td>Customer support experience</td>
+        <td>General-purpose</td>
+        <td>Requires assembly</td>
+        <td class="last-column">
+          <svg class="check-icon"><use href="#i-check"></use></svg>
+          <span>Built for your business</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    </section>
+<!-- Section: developers -->
+    <section id="developers" class="section container developer-section">
+      <div data-reveal>
+        <div class="chapter"><span>BUILT TO FIT RIGHT IN</span><span class="chapter-line"></span></div>
+        <h2 class="display-heading">Built for your product.<br><span class="muted-heading">Powered by RenAI </span></h2>
+        <p class="developer-intro">Integrate RenAI into your digital products to make relevant business knowledge accessible through familiar  conversational interfaces.</p>
+        <ul class="developer-points">
+          <li><svg class="icon"><use href="#i-check"/></svg>A familiar chat experience on web and mobile</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Knowledge separated from your interface</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Designed around your product, not the other way around</li>
+        </ul>
+        <button class="button button-dark" type="button" data-studio aria-haspopup="dialog" aria-controls="studioSheet">Explore the experience<svg class="icon"><use href="#i-up-right"/></svg></button>
+      </div>
+      <div class="integration-panel" data-reveal>
+        <div class="integration-tabs" role="tablist">
+          <button type="button" class="active" data-platform="web"><svg class="icon"><use href="#i-globe"/></svg>Web experience</button>
+        </div>
+        
+        
+<div class="browser-preview">
+    <video autoplay muted loop playsinline preload="auto">
+        <source src="./assets/RenaiChatbot-video2.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+    </video>
+</div>
+        <div class="integration-code-header"><span class="mono">CONCEPTUAL INTEGRATION FLOW</span><button class="copy-code" type="button"><svg class="icon"><use href="#i-copy"/></svg><span>Copy</span></button></div>
+
+        <pre><code id="integration-code">import { RenAI } from '@renai/sdk';
+
+            const renai = new RenAI({
+            apiKey: process.env.RENAI_KEY,
+            knowledgeBase: 'kb_enterprise_v2',
+            strictGrounding: true,
+            });</code></pre>
+      </div>
+    </section>
+        <!-- Section: pricing -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-head pricing-head">
+          <div>
+            <div class="section-label"> ROOM TO START. SPACE TO GROW.</div>
+            <h2>More intelligence..<br><span>The right investment.</span></h2>
+          </div>
+          <div class="billing-control">
+            <div class="billing-toggle" role="group" aria-label="Billing period">
+              <button type="button" aria-pressed="true" data-billing="monthly">Monthly</button>
+              <button type="button" aria-pressed="false" data-billing="annual">Annually</button>
+            </div>
+            <span class="save-badge">SAVE 20%<br>WITH ANNUAL</span>
+          </div>
+        </div>
+        <p class="pricing-disclaimer"><svg class="icon"><use href="#i-info"/></svg>Illustrative plans &amp; pricing in INR. Final features, limits, and availability are confirmed during your demo.</p>
+        <div class="pricing-grid">
+          <article class="price-card" data-reveal>
+            <h3 class="plan-label">Starter</h3>
+            <p class="plan-description1">Your knowledge, ready for its first conversation.</p>
+            <div class="plan-price1"><span data-price="149" style="font-size: 45px;">149</span><small>/ month</small></div>
+            <p class="billing-note" data-monthly-note="Billed monthly · illustrative pricing" style="color: #020005;">Billed monthly · illustrative pricing</p>
+            <button class="button button-ghost" data-purchase data-plan="Starter" aria-haspopup="dialog" aria-controls="leadSheet" type="button">Explore Starter <svg class="icon"><use href="#i-arrow"/></svg></button>
+            <ul class="plan-features1">
+              <li><svg class="icon"><use href="#i-check"/></svg>10,000 messages per month</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>5 knowledge sources</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Structure-aware chunking</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Hybrid retrieval &amp; citations</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Website chat widget</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Email support</li>
+            </ul>
+          </article>
+          <article class="price-card featured" data-reveal>
+            <span class="plan-badge">POPUALAR</span>
+            <h3 class="plan-label">Pro</h3>
+            <p class="plan-description2">More knowledge. More conversations. More possibility.</p>
+            <div class="plan-price2"><span data-price="499" style="font-size: 45px;">499</span><small>/ month</small></div>
+            <p class="billing-note" data-monthly-note="Billed monthly · illustrative pricing" style="color: #faf9f9;">Billed monthly · illustrative pricing</p>
+            <button class="button button-lime" data-purchase data-plan="Pro" aria-haspopup="dialog" aria-controls="leadSheet" type="button">Explore Pro <svg class="icon"><use href="#i-arrow"/></svg></button>
+            <ul class="plan-features2">
+              <li><svg class="icon"><use href="#i-check"/></svg>Everything in Starter, plus</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>100,000 messages per month</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Unlimited knowledge sources</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Multi-model configuration</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Advanced retrieval controls</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Priority support</li>
+            </ul>
+          </article>
+          <article class="price-card" data-reveal>
+            <h3 class="plan-label">Enterprise</h3>
+            <p class="plan-description3">Your requirements. Your intelligence. Your way.</p>
+            <div class="plan-price"><span class="custom-price">Let’s talk.</span></div>
+            <p class="billing-note" style="color: #03234b;">A scope built around your business</p>
+            <button class="button button-ghost" data-purchase data-plan="Enterprise" aria-haspopup="dialog" aria-controls="leadSheet" type="button">Build your plan <svg class="icon"><use href="#i-arrow"/></svg></button>
+            <ul class="plan-features3">
+              <li><svg class="icon"><use href="#i-check"/></svg>Custom message volume</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Tailored knowledge architecture</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Custom integration scoping</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Security &amp; governance review</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Dedicated onboarding</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Dedicated account support</li>
+            </ul>
+          </article>
+        </div>
+        <p class="pricing-footnote">Not sure where to start? Tell us about your knowledge. We’ll find the right fit together.</p>
+      </div>
+    </section>
+
+         <!-- Section: principle -->
+    <section class="principle-section" data-testid="principle-section"><div class="container principle-inner reveal"><span class="principle-number mono" data-testid="principle-chapter">Stay Connect With RGS ! </span><svg class="principle-mark" aria-hidden="true"><use href="#i-mark"/></svg><blockquote data-testid="brand-principle">We Integrate <span>RenAI ChatBot </span>into your website for smarter, faster customer support</blockquote><p data-testid="principle-description">Less searching. Less waiting. More getting things done.<br><br> Renai Chatbot</p></div></section>
+
+        <!-- Section: FAQ -->
+    <section id="faq" class="section faq-section container" aria-labelledby="faq-title" data-testid="faq-section"><div class="faq-heading reveal"><div class="chapter" data-testid="faq-chapter"><span> A LITTLE MORE CONTEXT</span><span class="chapter-line"></span></div><h2 class="display-heading" id="faq-title" data-testid="faq-title">Good questions.<br><span class="muted-heading">Grounded answers.</span></h2><p data-testid="faq-intro">The things you might be wondering.<br>Let’s clear them up.</p><button class="button button-lime faq-walkthrough" type="button" data-studio aria-haspopup="dialog" aria-controls="studioSheet" data-testid="faq-demo-button">Or, try the walkthrough<svg class="icon"><use href="#i-arrow"/></svg></button></div><div class="faq-list reveal">
+      <details data-testid="faq-item-1"><summary data-testid="faq-question-1">How is RenAI different from a normal chatbot?<span class="faq-plus" aria-hidden="true"></span></summary><p data-testid="faq-answer-1">A general-purpose chatbot relies primarily on its training data. RenAI’s retrieval-augmented generation (RAG) approach retrieves relevant information from company-controlled knowledge before generating an answer. That makes the response specific to your business, rather than just plausible.</p></details>
+      <details data-testid="faq-item-2"><summary data-testid="faq-question-2">What knowledge can I use with RenAI?<span class="faq-plus" aria-hidden="true"></span></summary><p data-testid="faq-answer-2">The experience is designed around business documents, product guides, help articles, website content, and other customer-facing knowledge. In this walkthrough, you can explore sample team, billing, and integration guides. Actual ingestion and file-format support are part of the production integration, not this static demo.</p></details>
+      <details data-testid="faq-item-3"><summary data-testid="faq-question-3">Can RenAI be used in web and mobile applications?<span class="faq-plus" aria-hidden="true"></span></summary><p data-testid="faq-answer-3">Yes—the architecture separates the knowledge and answer-generation layer from the customer interface. That allows a website widget, an in-app chat, or a mobile interface to use the same underlying knowledge. Explore both interface concepts in the developer section above.</p></details>
+      <details data-testid="faq-item-4"><summary data-testid="faq-question-4">What happens when the knowledge doesn’t have an answer?<span class="faq-plus" aria-hidden="true"></span></summary><p data-testid="faq-answer-4">Trustworthy support should acknowledge missing information instead of inventing an answer. RenAI’s intended approach is to stay within available context and guide the customer toward human help when needed. You can try an out-of-scope question in this walkthrough to see that behavior illustrated.</p></details>
+      <details data-testid="faq-item-5"><summary data-testid="faq-question-5">Is the interactive demo connected to a live AI model?<span class="faq-plus" aria-hidden="true"></span></summary><p data-testid="faq-answer-5">No. This is a self-contained product walkthrough with prewritten answers and sample knowledge. It illustrates retrieval, source citations, and responsible fallback behavior without sending your questions to an external service. A production RenAI integration would require a backend, knowledge ingestion, and a connected AI model.</p></details>
+    </div></section>
+
+        <!-- Section: closing -->
+    <section class="closing-section container" data-testid="closing-section"><div class="closing-card reveal"><div class="closing-grid" aria-hidden="true"></div><div class="closing-content"><div class="eyebrow" data-testid="closing-eyebrow"><span class="status-dot"></span>LET YOUR KNOWLEDGE DO THE TALKING.</div><h2 data-testid="closing-title">RenAI ChatBot<br> <br> Turn your knowledge into<br> a conversation.</h2><p data-testid="closing-description">See what happens when your knowledge meets a better conversation.</p><button class="button button-dark" type="button" data-purchase aria-haspopup="dialog" aria-controls="leadSheet" data-testid="closing-demo-button">Send Purchase Request<svg class="icon"><use href="#i-up-right"/></svg></button><span class="closing-small" data-testid="closing-note">An interactive walkthrough. No signup needed.</span></div><svg class="closing-mark" aria-hidden="true"><use href="#i-mark"/></svg></div></section>
+  </main>
+  
+
+    <!-- Section: footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="foot-grid">
+        <div><div class="foot-brand"><img class="foot-logo" src="assets\renai-logo-full.png" alt="RenAI Global Solution" width="345" height="215"></div><p class="foot-tag">AI customer support, <br>We convert Your Ideas into Products.</p></div>
+        <div class="foot-col"><h5>Product</h5><ul><li><a href="#features">Why RenAI</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+        <div class="foot-col"><h5>Company</h5><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+        <div class="foot-col"><h5>Trust</h5><ul><li><a href="#">Security</a></li><li><a href="#">SOC 2</a></li><li><a href="#">Status</a></li></ul></div>
+      </div>
+      <div class="foot-bar"><span>© 2026 Renai Global Solution</span><span></span></div>
+    </div>
+  </footer>
+
+    <!-- Overlay: Purchase ChatBot CTA sheet (hidden until a Purchase ChatBot button is clicked) -->
+  <div class="lead-sheet" id="leadSheet" hidden>
+    <div class="lead-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="leadSheetTitle">
+      <button class="lead-sheet-close" type="button" data-lead-close aria-label="Close form">×</button>
+      <div class="lead-cta">
+        <div class="lead-cta-container">
+
+          <div class="lead-cta-content">
+            <span class="lead-cta-tag">LET'S CONNECT</span>
+
+            <h2 id="leadSheetTitle">Ready to Get Started?</h2>
+
+            <p>
+              Share your details and our team will get in touch
+              with you shortly.
+            </p>
+
+            <div class="lead-cta-benefit">
+              <span class="lead-cta-check">✓</span>
+              Quick and easy registration
+            </div>
+
+            <div class="lead-cta-benefit">
+              <span class="lead-cta-check">✓</span>
+              Personalized assistance from our team
+            </div>
+          </div>
+
+          <div class="lead-cta-form-card">
+            <h3>Get in Touch</h3>
+
+            <p class="lead-cta-form-description">
+              Enter your details below
+            </p>
+
+            <form class="lead-cta-form" id="leadCtaForm" action="send-enquiry.php" method="POST">
+
+              <div class="lead-cta-field">
+                <label for="leadName">Full Name</label>
+                <input type="text" id="leadName" name="name" placeholder="Enter your full name" autocomplete="name" maxlength="100" required>
+              </div>
+
+              <div class="lead-cta-field">
+                <label for="leadPhone">Contact Number</label>
+                <input type="tel" id="leadPhone" name="contact_number" placeholder="Enter your contact number" autocomplete="tel" maxlength="20" required>
+              </div>
+
+              <div class="lead-cta-field" id="leadPlanField" hidden>
+                <label for="leadPlan">Selected Plan</label>
+                <input type="text" id="leadPlan" name="plan" readonly disabled>
+              </div>
+
+              <div class="lead-cta-field">
+                <label for="leadDescription">Description</label>
+                <textarea id="leadDescription" name="description" placeholder="Tell us briefly what you need" rows="3" maxlength="1000" required></textarea>
+              </div>
+
+              <button type="submit" class="lead-cta-button">
+                Confirm Details
+                <span aria-hidden="true">→</span>
+              </button>
+
+              <p class="lead-cta-privacy">
+                Your information will be handled responsibly.
+              </p>
+              <p id="leadCtaStatus" role="status" aria-live="polite" hidden></p>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay: Knowledge Studio sheet (opens from "Explore the experience" / "Or, try the walkthrough", then scrolls to the Knowledge Studio) -->
+  <div class="lead-sheet studio-sheet" id="studioSheet" hidden>
+    <div class="lead-sheet-panel studio-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="studioSheetTitle">
+      <button class="lead-sheet-close" type="button" data-studio-close aria-label="Close">×</button>
+      <div class="studio-sheet-card">
+        <span class="studio-sheet-tag">RENAI KNOWLEDGE STUDIO</span>
+        <h2 id="studioSheetTitle">Opening the Knowledge Studio</h2>
+        <p>See how RenAI connects your knowledge, understands it and answers with confidence.</p>
+        <div class="studio-sheet-steps" aria-hidden="true"><span>1 Connect</span><span>2 Understand</span><span>3 Answer</span></div>
+        <div class="studio-sheet-progress" aria-hidden="true"><span></span></div>
+        <button type="button" class="studio-sheet-go" data-studio-go>Open Knowledge Studio <span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
